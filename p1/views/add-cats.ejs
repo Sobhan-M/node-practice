@@ -1,0 +1,26 @@
+<%- include('./modules/header') %>
+
+</head>
+
+<%- include('./modules/nav') %>
+
+<body>
+	<h1> Home </h1>
+
+	<form method="POST" action="/add-cat">
+		<label for="name"> Name </label>
+		<input type="text" name="name" id="name">
+
+		<label for="age"> Age </label>
+		<input type="number" name="age" id="age">
+
+		<label for="colour"> Colour </label>
+		<input type="text" name="colour" id="colour">
+
+		<label for="description"> Description </label>
+		<textarea name="description" id="description"> </textarea>
+		
+		<button type="submit">Add Cat</button>
+	</form>
+
+<%- include('./modules/footer') %>

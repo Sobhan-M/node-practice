@@ -7,4 +7,16 @@
 <body>
 	<h1> Home </h1>
 
+	<div class="cat-grid">
+		<% for(let i = 0; i < cats.length; ++i) { %>
+			<h2> <%= cats[i].name %></h2>
+			<ul>
+				<li><p> Name: <%= cats[i].name %></p></li>
+				<li><p> Age: <%= cats[i].age %></p></li>
+				<li><p> Colour: <%= cats[i].colour %></p></li>
+				<li><p> Description: <%= cats[i].description %></p></li>
+			</ul>
+		<% } %>
+	</div>
+
 <%- include('./modules/footer') %>
