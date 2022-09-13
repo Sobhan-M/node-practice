@@ -19,7 +19,7 @@ Character.belongsTo(Player, {onDelete: 'CASCADE'});
 Player.hasMany(Character);
 
 // Starting server.
-sequelize.sync()
+sequelize.sync(/*{force: true}*/)
 	.then(result => {
 		app.listen(8000);
 	})
