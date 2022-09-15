@@ -1,3 +1,7 @@
+const Sequelize = require('sequelize');
+const Player = require('../models/player');
+const sequelize = require('../util/database');
+
 
 exports.getHome = (req, res, next) => {
 	res.render('index', {
@@ -14,7 +18,19 @@ exports.getAddPlayer = (req, res, next) => {
 };
 
 exports.postCreatePlayer = (req, res, next) => {
-	res.redirect('/');
+	let name = req.body.name;
+	let age = req.body.age;
+
+	Player.create({
+		name: name,
+		age: age
+	})
+		.then(result => {
+			res.redirect('/');
+		})
+		.catch(err => {
+			console.log(err);
+		})
 };
 
 exports.postEditPlayer = (req, res, next) => {
