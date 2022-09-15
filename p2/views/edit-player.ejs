@@ -1,0 +1,21 @@
+<%- include('./modules/head') %>
+</head>
+
+<body>
+	<%- include('./modules/nav') %>
+
+	<h1> Edit Player <%= player.name %> </h1>
+
+	<form action="/edit-player" method="post">
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" value="<%= player.name %>" required>
+
+		<label for="age">Age:</label>
+		<input type="number" min="1" max="199" id="age" name="age" value="<%= player.age %>" required>
+
+		<input type="hidden" id="id" name="id" value="<%= player.id %>">
+
+		<button type="submit">Edit</button>
+	</form>
+
+<%- include('./modules/foot') %>
