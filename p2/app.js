@@ -22,6 +22,13 @@ app.set('views', 'views');
 Character.belongsTo(Player, {onDelete: 'CASCADE'});
 Player.hasMany(Character);
 
+// Setting up routes.
+const playerRoutes = require('./routes/player');
+const characterRoutes = require('./routes/character');
+
+app.use(playerRoutes);
+app.use(characterRoutes);
+
 // Starting server.
 sequelize.sync(/*{force: true}*/)
 	.then(result => {

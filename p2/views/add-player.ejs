@@ -1,0 +1,19 @@
+<%- include('./modules/head') %>
+</head>
+
+<body>
+	<%- include('./modules/nav') %>
+
+	<h1> Add A Player </h1>
+
+	<form action="/create-player" method="post">
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" required>
+
+		<label for="age">Age:</label>
+		<input type="number" min="1" max="199">
+
+		<button type="submit">Submit</button>
+	</form>
+
+<%- include('./modules/foot') %>
