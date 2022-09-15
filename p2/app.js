@@ -14,6 +14,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
+// Setting up view engine.
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
 // Database management.
 Character.belongsTo(Player, {onDelete: 'CASCADE'});
 Player.hasMany(Character);
