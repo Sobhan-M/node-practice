@@ -61,7 +61,7 @@ exports.postEditPlayer = (req, res, next) => {
 	let name = req.body.name;
 	let age = req.body.age;
 
-	Player.update({name: name, age: age}, {
+	Player.update({ name: name, age: age }, {
 		where: {
 			id: playerId
 		}
@@ -76,5 +76,17 @@ exports.postEditPlayer = (req, res, next) => {
 };
 
 exports.postDeletePlayer = (req, res, next) => {
-	res.redirect('/');
+	let playerId = req.body.id;
+
+	Player.destroy({
+		where: {
+			id: playerId
+		}
+	})
+	.then(result => {
+		res.redirect('/');
+	})
+	.catch(err => {
+		console.log(err);
+	});
 };
