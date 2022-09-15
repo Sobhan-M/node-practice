@@ -4,9 +4,16 @@ const sequelize = require('../util/database');
 
 
 exports.getHome = (req, res, next) => {
+	Player.findAll()
+		.then(players => {
 	res.render('index', {
 		pageTitle: 'Home',
-		path: '/'
+				path: '/',
+				players: players
+			});
+		})
+		.catch(err => {
+			console.log(err);
 	});
 };
 

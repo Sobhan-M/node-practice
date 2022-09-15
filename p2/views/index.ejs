@@ -4,6 +4,21 @@
 <body>
 	<%- include('./modules/nav') %>
 
-	<h1> Welcome To The Home Page </h1>
+	<h1> Players </h1>
+	<div>
+		<% players.forEach(player => { %> 
+		<div>
+			<h2><%= player.name %> </h2>
+			<p><%= player.age %> </p>
+			<form action="/delete-player" method="post">
+				<input type="hidden" name="id" value="<%= player.id %>">
+				<button type="submit">Delete</button>
+			</form>
+
+			<button><a href="/edit-player/<%= player.id %>">Edit</a></button>
+			
+		</div>
+		<% }) %> 
+	</div>
 
 <%- include('./modules/foot') %>
