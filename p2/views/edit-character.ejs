@@ -1,0 +1,42 @@
+<%- include('./modules/head') %>
+</head>
+
+<body>
+	<%- include('./modules/nav') %>
+
+	<h1> Edit Character <%= character.name %> </h1>
+
+	<form action="/edit-character" method="post">
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" value="<%= character.name %>" required>
+
+		<label for="class">Class:</label>
+		<input type="text" name="class" id="class" value="<%= character.class %>" required>
+
+		<label for="level">Level:</label>
+		<input type="number" name="level" id="level" min="1" max="20" value="<%= character.level %>" required>
+
+		<label for="str">Strength:</label>
+		<input type="number" name="str" id="str" min="1" max="20" value="<%= character.str %>" required>
+
+		<label for="dex">Dexterity:</label>
+		<input type="number" name="dex" id="dex" min="1" max="20" value="<%= character.dex %>" required>
+
+		<label for="con">Constitution:</label>
+		<input type="number" name="con" id="con" min="1" max="20" value="<%= character.con %>" required>
+		
+		<label for="int">Intelligence:</label>
+		<input type="number" name="int" id="int" min="1" max="20" value="<%= character.int %>" required>
+
+		<label for="wis">Wisdom:</label>
+		<input type="number" name="wis" id="wis" min="1" max="20" value="<%= character.wis %>" required>
+
+		<label for="cha">Charisma:</label>
+		<input type="number" name="cha" id="cha" min="1" max="20" value="<%= character.cha %>" required>
+
+		<input type="hidden" id="id" name="id" value="<%= character.id %>">
+
+		<button type="submit">Edit</button>
+	</form>
+
+<%- include('./modules/foot') %>

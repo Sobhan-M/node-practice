@@ -56,18 +56,57 @@ exports.postCreateCharacter = (req, res, next) => {
 		.catch(err => {
 			console.log(err);
 		});
-
-	// TODO: Implement character creation.
 };
 
 exports.getEditCharacter = (req, res, next) => {
-	let chracterId = req.params.characterId;
+	let characterId = req.params.characterId;
 
-	// TODO: Implement editing.
+	Character.findByPk(characterId)
+		.then(character => {
+			res.render('edit-character', {
+				pageTitle: `Edit ${character.name}`,
+				path: '',
+				character: character
+			});
+		})
+		.catch(err => {
+			console.log(err);
+		});
 };
 
 exports.postEditCharacter = (req, res, next) => {
-	// TODO: Implement editing.
+	let characterId = req.body.id;
+	let characterName = req.body.name;
+	let characterClass = req.body.class;
+	let characterLevel = req.body.level;
+	let str = req.body.str;
+	let dex = req.body.dex;
+	let con = req.body.con;
+	let int = req.body.int;
+	let wis = req.body.wis;
+	let cha = req.body.cha;
+
+	Character.update({
+		name: characterName,
+		class: characterClass,
+		level: characterLevel,
+		str: str,
+		dex: dex,
+		con: con,
+		int: int,
+		wis: wis,
+		cha: cha
+	},
+		{
+			where:
+				{ id: characterId }
+		})
+		.then(player => {
+			res.redirect('/characters');
+		})
+		.catch(err => {
+			console.log(err);
+		});
 };
 
 exports.postDeleteCharacter = (req, res, next) => {
