@@ -110,6 +110,18 @@ exports.postEditCharacter = (req, res, next) => {
 };
 
 exports.postDeleteCharacter = (req, res, next) => {
-	// TODO: Implement deleting.
+	let characterId = req.body.id;
+
+	Character.destroy({
+		where: {
+			id: characterId
+		}
+	})
+		.then(result => {
+			res.redirect('characters');
+		})
+		.catch(err => {
+			console.log(err);
+		})
 };
 
