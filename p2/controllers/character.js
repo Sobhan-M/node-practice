@@ -12,6 +12,36 @@ exports.getAddCharacter = (req, res, next) => {
 };
 
 exports.postCreateCharacter = (req, res, next) => {
+	let characterName = req.body.name;
+	let characterClass = req.body.class;
+	let characterLevel = req.body.level;
+	let str = req.body.str;
+	let dex = req.body.dex;
+	let con = req.body.con;
+	let int = req.body.int;
+	let wis = req.body.wis;
+	let cha = req.body.cha;
+
+	// TODO: Error handling if it doesn't match point-buy method.
+
+	Character.create({
+		name: characterName,
+		class: characterClass,
+		level: characterLevel,
+		str: str,
+		dex: dex,
+		con: con,
+		int: int,
+		wis: wis,
+		cha: cha
+	})
+	.then(result => {
+		res.redirect('/characters');
+	})
+	.catch(err => {
+		console.log(err);
+	});
+
 	// TODO: Implement character creation.
 };
 

@@ -1,0 +1,40 @@
+<%- include('./modules/head') %>
+</head>
+
+<body>
+	<%- include('./modules/nav') %>
+
+	<h1> Add A Character </h1>
+
+	<form action="/create-character" method="post">
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" required>
+
+		<label for="class">Class:</label>
+		<input type="text" name="class" id="class" required>
+
+		<label for="level">Level:</label>
+		<input type="number" name="level" id="level" min="1" max="20" required>
+
+		<label for="str">Strength:</label>
+		<input type="number" name="str" id="str" min="1" max="20" required>
+
+		<label for="dex">Dexterity:</label>
+		<input type="number" name="dex" id="dex" min="1" max="20" required>
+
+		<label for="con">Constitution:</label>
+		<input type="number" name="con" id="con" min="1" max="20" required>
+
+		<label for="int">Intelligence:</label>
+		<input type="number" name="int" id="int" min="1" max="20" required>
+
+		<label for="wis">Wisdom:</label>
+		<input type="number" name="wis" id="wis" min="1" max="20" required>
+
+		<label for="cha">Charisma:</label>
+		<input type="number" name="cha" id="cha" min="1" max="20" required>
+
+		<button type="submit">Submit</button>
+	</form>
+
+<%- include('./modules/foot') %>
