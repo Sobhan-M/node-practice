@@ -3,6 +3,8 @@ const router = express.Router();
 
 const characterController = require('../controllers/character');
 
+router.get('/characters', characterController.getCharacters)
+
 router.get('/add-character', characterController.getAddCharacter);
 
 router.post('/create-character', characterController.postCreateCharacter);

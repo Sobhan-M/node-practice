@@ -4,6 +4,21 @@ const sequelize = require('../util/database');
 const Character = require('../models/character');
 const Player = require('../models/player');
 
+exports.getCharacters = (req, res, next) => {
+
+	Character.findAll()
+		.then(characters => {
+			res.render('characters', {
+				pageTitle: 'Characters',
+				path: '/characters',
+				characters: characters
+			});
+		})
+		.catch(err => {
+			console.log(err);
+		});
+};
+
 exports.getAddCharacter = (req, res, next) => {
 	res.render('add-character', {
 		pageTitle: 'Add Character',
@@ -35,12 +50,12 @@ exports.postCreateCharacter = (req, res, next) => {
 		wis: wis,
 		cha: cha
 	})
-	.then(result => {
-		res.redirect('/characters');
-	})
-	.catch(err => {
-		console.log(err);
-	});
+		.then(result => {
+			res.redirect('/characters');
+		})
+		.catch(err => {
+			console.log(err);
+		});
 
 	// TODO: Implement character creation.
 };

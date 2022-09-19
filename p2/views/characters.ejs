@@ -1,0 +1,57 @@
+<%- include('./modules/head') %>
+</head>
+
+<body>
+	<%- include('./modules/nav') %>
+
+	<h1> Characters </h1>
+	<div>
+		<% characters.forEach(character => { %> 
+		<div>
+			<h2><%= character.name %> </h2>
+			<h3><%= character.class %>  <%= character.level %> </h3>
+			<table>
+				<tr>
+					<th>Ability</th>
+					<th>Score</th>
+				</tr>
+				<tr>
+					<th>Strength</th>
+					<td><%= character.str %> </td>
+				</tr>
+				<tr>
+					<th>Dexterity</th>
+					<td><%= character.dex %> </td>
+				</tr>
+				<tr>
+					<th>Constitution</th>
+					<td><%= character.con %> </td>
+				</tr>
+				<tr>
+					<th>Intelligence</th>
+					<td><%= character.int %> </td>
+				</tr>
+				<tr>
+					<th>Wisdom</th>
+					<td><%= character.wis %> </td>
+				</tr>
+				<tr>
+					<th>Charisma</th>
+					<td><%= character.cha %> </td>
+				</tr>
+			</table>
+
+
+
+			<form action="/delete-character" method="post">
+				<input type="hidden" name="id" value="<%= character.id %>">
+				<button type="submit">Delete</button>
+			</form>
+
+			<button><a href="/edit-character/<%= character.id %>">Edit</a></button>
+			
+		</div>
+		<% }) %> 
+	</div>
+
+<%- include('./modules/foot') %>
