@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const generalRouter = require('./routes/general');
 
@@ -13,4 +14,11 @@ app.set('views', 'views');
 
 app.use(generalRouter);
 
-app.listen(3000);
+mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0')
+	.then(result => {
+		app.listen(3000);
+	})
+	.catch(err => {
+		console.log(err);
+	})
+
